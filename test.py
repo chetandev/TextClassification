@@ -11,7 +11,14 @@ from sklearn.linear_model import SGDClassifier
 
 
 
-data = pd.read_csv('text.csv')
+data = pd.read_csv('text.csv',names=["text","category"])
+
+print data.category.value_counts()
+
+
+
+
+
 numpy_array = data.as_matrix()
 X = numpy_array[:, 0]
 Y = numpy_array[:, 1]
@@ -21,9 +28,8 @@ count_vect = CountVectorizer()
 
 X_train_counts = count_vect.fit_transform(X_train)
 
-print(pd.DataFrame(X_train_counts.A, columns=count_vect.get_feature_names()).to_string())
-
-
+# print X_train_counts.toarray()
+# print pd.DataFrame(X_train_counts.toarray(),columns=count_vect.get_feature_names())
 
 
 
