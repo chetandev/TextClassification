@@ -1,4 +1,5 @@
 import logging
+from logging import handlers
 
 class AppFilter(logging.Filter):
 
@@ -23,7 +24,9 @@ logger = logging.getLogger('__logger__')
 logger.setLevel(logging.INFO)
 logger.addFilter(AppFilter())
 
-fh = logging.FileHandler(filename='text-classification.log')
+
+fh = logging.handlers.RotatingFileHandler(filename="text-classification.log", mode='a', maxBytes=5*1024*1024,
+                                 backupCount=20, encoding=None, delay=0)
 fh.setLevel(logging.INFO)
 
 
