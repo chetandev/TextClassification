@@ -32,6 +32,7 @@ def getData(time):
 def updateCategory(category,row):
     try:
         logger.info('inside updateCategory function try block')
+        print category
         curr_timestamp = time.time()*1000
         result = session.execute(query=updateQuery, parameters=[row.user_id,row.device_key,row.msg_hash,row.msg_time,row.address,row.app_type,category,row.conv_id,row.device_msg_id,curr_timestamp,row.msg_type,row.name,row.operation,row.msg_text])
         logger.info('inside updateCategory function try block data inserted successfully', extra={"userid":row.user_id,"devicekey":row.device_key,"hash":row.msg_hash})
